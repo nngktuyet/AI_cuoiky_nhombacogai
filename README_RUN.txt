@@ -3,22 +3,6 @@ CHECKIE - WEB CHECKOUT CĂN TIN
 File chính:
 - checkie_backend_app_v7_qr_print.py
 
-Logic backend hiện tại:
-1. Giữ nguyên giao diện cũ: tải ảnh/chụp ảnh, chỉnh tối đa 5 box, nhận diện, QR cố định, in hóa đơn.
-2. CNN chính dùng models/model_food.h5 để nhận diện 14 class món ăn, input 128x128x3.
-3. Không dùng YOLO cá. Canh chua có cá / không cá được nhận diện trực tiếp bằng CNN chính.
-4. Không dùng YOLO trứng và không còn file .pt trong thư mục models.
-5. Nếu CNN chính dự đoán thit-kho:
-   - Backend chia vùng thịt kho thành lưới 5x6 = 30 ô không trùng nhau.
-   - Mỗi ô được đưa vào models/model_thitkho1.h5.
-   - Class 1 với confidence >= 80% được xem là ô có trứng.
-   - Các ô trứng liền kề được gom thành 1 cụm để tránh đếm trùng.
-   - Tối đa 5 trứng.
-6. Công thức thịt kho:
-   - 0 trứng: Thịt kho = 25.000 đ
-   - 1 trứng: Thịt kho trứng = 30.000 đ
-   - Từ trứng thứ 2: +6.000 đ/trứng
-
 Cấu trúc thư mục chính:
 - checkie_backend_app_v7_qr_print.py
 - assets/vietcombank_qr.jpg
